@@ -19,6 +19,8 @@ export const colors: Record<Topic, string> = {
 };
 export interface Entry {
   id: string;
+  conceptIds?: string[];
+  topicId?: string;
   createdAt: string;
   updatedAt: string;
   text: string;
@@ -38,17 +40,96 @@ export interface SemanticEngine {
   relationships(entry: Entry, others: Entry[]): Entry["related"];
 }
 const lexicon: Record<Topic, string[]> = {
-  Philosophy: ["meaning", "time", "exist", "freedom", "question", "life"],
-  Running: ["run", "running", "body", "breath", "pace", "miles"],
-  Psychology: ["mind", "habit", "attention", "memory", "feeling", "anxiety"],
-  Literature: ["book", "read", "poem", "story", "words", "write"],
-  Technology: ["code", "machine", "design", "digital", "technology", "system"],
-  Everyday: ["coffee", "rain", "street", "window", "morning", "light"],
-  Reflection: ["myself", "remember", "gratitude", "friend", "change", "quiet"],
+  Philosophy: [
+    "meaning",
+    "time",
+    "exist",
+    "freedom",
+    "question",
+    "life",
+    "哲学",
+    "意义",
+    "自由意志",
+  ],
+  Running: [
+    "run",
+    "running",
+    "body",
+    "breath",
+    "pace",
+    "miles",
+    "跑步",
+    "运动",
+    "呼吸",
+    "身体",
+  ],
+  Psychology: [
+    "mind",
+    "habit",
+    "attention",
+    "memory",
+    "feeling",
+    "anxiety",
+    "心理",
+    "焦虑",
+    "注意力",
+    "记忆",
+  ],
+  Literature: [
+    "book",
+    "read",
+    "poem",
+    "story",
+    "words",
+    "write",
+    "文学",
+    "阅读",
+    "诗歌",
+  ],
+  Technology: [
+    "code",
+    "machine",
+    "design",
+    "digital",
+    "technology",
+    "system",
+    "技术",
+    "人工智能",
+    "机器学习",
+    "代码",
+  ],
+  Everyday: [
+    "coffee",
+    "rain",
+    "street",
+    "window",
+    "morning",
+    "light",
+    "咖啡",
+    "日常",
+    "观察",
+  ],
+  Reflection: [
+    "myself",
+    "remember",
+    "gratitude",
+    "friend",
+    "change",
+    "quiet",
+    "反思",
+    "感恩",
+    "朋友",
+  ],
 };
 export const semantic: SemanticEngine = {
   classify(text) {
     const words = text.toLowerCase();
+    if (
+      !topics.some((topic) =>
+        lexicon[topic].some((word) => words.includes(word)),
+      )
+    )
+      return "Reflection";
     return [...topics].sort(
       (a, b) =>
         lexicon[b].filter((w) => words.includes(w)).length -

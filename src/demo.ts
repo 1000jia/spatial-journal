@@ -109,6 +109,7 @@ export const demoEntries = connect(
       ...e,
       id,
       demo: true,
+      keywords: [...tags], // Curated fictional concepts; existing stored notes are never overwritten.
       createdAt: new Date(Date.UTC(2026, 9, 4 + i, 9 + (i % 8))).toISOString(),
       coordinates: position(id, topic),
     };
