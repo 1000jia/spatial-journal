@@ -32,7 +32,9 @@ npx playwright install chromium  # needed only if a browser is not already avail
 npm run test:e2e
 ```
 
-Browser tests use `/usr/bin/chromium` when available, otherwise Playwright's installed Chromium. Set `CHROMIUM_PATH` to override. Tests start or reuse Vite on port 5173. Unit tests cover classification, relationship strengths, stable coordinates, demo isolation, CRUD, seeding, draft state, and atomic submission/undo metadata. Browser tests cover save, reload, editing, undo after reload, IndexedDB draft recovery without localStorage, archive navigation, responsive editor, and drag submission. They assert no runtime errors in the persistence flow.
+Browser tests use `/usr/bin/chromium` when available, otherwise Playwright's installed Chromium. Set `CHROMIUM_PATH` to override. Tests start or reuse Vite on port 5173. Unit tests cover classification, relationship strengths, stable coordinates, demo isolation, CRUD, seeding, draft state, and atomic submission/undo metadata. Browser tests cover save, reload, editing, undo after reload, IndexedDB draft recovery without localStorage, archive navigation, responsive editor, and drag submission. They also verify that undoing a new note restores a draft that survives another refresh, and assert no runtime errors in the persistence flow.
+
+Validated in this environment: `npm ci`, production build, 7 unit tests, and 3 Chromium browser tests. The desktop editor was measured at 360 × 700 CSS pixels.
 
 ## Structure
 
