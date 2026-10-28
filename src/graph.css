@@ -1,0 +1,467 @@
+.graph-workspace {
+  border: 0;
+  padding: 0;
+  margin: 0;
+  min-width: 0;
+}
+.sidebar nav {
+  display: grid;
+  gap: 10px;
+}
+.sidebar nav button {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  padding: 14px;
+  border: 0;
+  background: transparent;
+  text-align: left;
+  color: inherit;
+}
+.sidebar nav .active {
+  background: #dce4d3;
+  border-radius: 5px;
+}
+.topic-key {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 14px 4px;
+  font-size: 12px;
+}
+.topic-key i {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+}
+.topic-key small {
+  margin-left: auto;
+}
+.sidebar-foot {
+  font-size: 11px;
+  margin-top: 32px;
+  color: #7f8d76;
+}
+.graph-heading {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+  padding: 15px 0;
+  border-bottom: 1px solid #dde2d3;
+  font-size: 11px;
+  letter-spacing: 1px;
+}
+.graph-heading input {
+  margin-left: auto;
+}
+.graph-workspace input:not([type="checkbox"]):not([type="color"]),
+.graph-workspace select {
+  padding: 9px;
+  border: 1px solid #cdd6c3;
+  background: #fffdf5;
+  color: #3c4b37;
+  border-radius: 4px;
+  max-width: 100%;
+}
+.graph-workspace button:not(.mini-note):not(.source-note) {
+  padding: 8px 12px;
+  border: 1px solid #cdd6c3;
+  background: #f2f4eb;
+  color: #3c4b37;
+  border-radius: 4px;
+  font-size: 12px;
+}
+.graph-workspace button:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+.graph-workspace label {
+  font-size: 12px;
+}
+.focus-controls {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 12px 0;
+}
+.focus-controls span {
+  font-size: 11px;
+  color: #738568;
+}
+.focus-controls select {
+  margin-left: 10px;
+}
+.network-wrap {
+  position: relative;
+  border: 1px solid #d4ddcb;
+  background: #f8f9f1;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.keyword-network {
+  width: 100%;
+  height: 550px;
+  display: block;
+  touch-action: none;
+}
+.keyword-network [role="button"] {
+  cursor: pointer;
+  outline: none;
+}
+.keyword-network [role="button"]:focus circle {
+  stroke: #162c18;
+  stroke-width: 4;
+}
+.keyword-network [data-edge]:focus line:first-child {
+  stroke: #233f23;
+  stroke-width: 5;
+}
+.concept-label {
+  font: 13px Arial;
+  fill: #34452e;
+  paint-order: stroke;
+  stroke: #f8f9f1;
+  stroke-width: 4px;
+  stroke-linejoin: round;
+  user-select: none;
+  pointer-events: none;
+}
+.network-tools {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  z-index: 1;
+}
+.network-tools span {
+  font-size: 11px;
+}
+.network-hint {
+  margin: 0;
+  padding: 12px;
+  font-size: 11px;
+  color: #75856a;
+  border-top: 1px solid #dfe6d7;
+}
+.network-empty {
+  position: absolute;
+  top: 45%;
+  left: 10%;
+  right: 10%;
+  text-align: center;
+  pointer-events: none;
+  color: #728367;
+}
+.concept-add {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: 16px 0;
+}
+.inspection-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+.inspector,
+.management {
+  background: #fffdf5;
+  border: 1px solid #d5ddcb;
+  border-radius: 6px;
+  padding: 24px;
+}
+.inspector {
+  margin: 16px 0;
+  max-width: 800px;
+}
+.panel-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.panel-title h2 {
+  font: 26px Georgia;
+  margin: 0 0 10px;
+}
+.inspector form,
+.management form {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 15px 0;
+}
+.inspector form input {
+  margin-left: 10px;
+}
+.inspector details {
+  border-top: 1px solid #dce2d3;
+  padding: 14px 0;
+}
+.inspector details button {
+  margin: 7px;
+}
+.inspector details p,
+.inspector small,
+.management p {
+  font-size: 12px;
+  line-height: 1.6;
+  color: #75846a;
+}
+.inspector > label {
+  display: block;
+  margin: 12px 0;
+}
+.inspector > label select {
+  margin-left: 10px;
+}
+.inspector h3 {
+  font: 17px Georgia;
+  margin: 22px 0 10px;
+}
+.source-note {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 14px;
+  margin: 10px 0;
+  background: #f7f6ec;
+  border: 1px solid #dce2d3;
+  border-radius: 4px;
+  line-height: 1.6;
+  color: inherit;
+}
+.source-note small {
+  display: block;
+}
+.check-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin: 12px 0;
+  line-height: 1.5;
+}
+.check-note input {
+  flex-shrink: 0;
+}
+.chips {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.inspector dl {
+  display: grid;
+  grid-template-columns: 170px 1fr;
+  gap: 12px;
+  font-size: 13px;
+}
+.inspector dd {
+  margin: 0;
+}
+.theme-row {
+  border-top: 1px solid #dce2d3;
+  padding: 14px 0;
+}
+.theme-row button {
+  margin: 5px;
+}
+.theme-row input[type="color"],
+.management input[type="color"] {
+  width: 48px;
+  height: 36px;
+  padding: 2px;
+  border: 1px solid #d2dac9;
+}
+.excluded-list {
+  font-size: 12px;
+  padding: 12px 0;
+}
+.excluded-list button {
+  margin: 8px;
+}
+.note-preview {
+  padding: 20px;
+  background: #fffdf5;
+  border: 1px solid #d8dfcf;
+  line-height: 1.7;
+  margin-top: 18px;
+}
+.note-preview button {
+  margin-right: 10px;
+}
+.mini-note span {
+  font-size: 11px;
+  color: #78896b;
+  line-height: 1.5;
+  display: block;
+}
+.editor-meta {
+  flex-shrink: 0;
+}
+.editor-meta small {
+  font-size: 10px;
+  line-height: 1.5;
+  color: #718361;
+}
+.editor-meta > button {
+  border: 1px solid #ced8c1;
+  background: #eef2e5;
+  padding: 5px;
+  font-size: 11px;
+}
+.editor .editor-meta {
+  max-height: 235px;
+  overflow: auto;
+}
+.editor textarea {
+  min-height: 70px;
+}
+.graph-workspace .recent {
+  margin-top: 30px;
+}
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+summary:focus-visible {
+  outline: 2px solid #54764a;
+  outline-offset: 3px;
+}
+@media (max-width: 700px) {
+  .keyword-network {
+    height: 420px;
+  }
+  .graph-heading {
+    gap: 10px;
+  }
+  .graph-heading input {
+    width: 100%;
+    margin: 0;
+  }
+  .focus-controls span {
+    width: 100%;
+  }
+  .inspector,
+  .management {
+    padding: 16px;
+  }
+  .concept-add input {
+    min-width: 0;
+    flex: 1;
+  }
+  .concept-add select {
+    width: 100%;
+  }
+  .sidebar nav {
+    display: flex;
+    gap: 2px;
+  }
+  .sidebar nav button {
+    padding: 8px;
+    font-size: 11px;
+  }
+  .sidebar .topic-key,
+  .sidebar .sidebar-foot {
+    display: none;
+  }
+  .inspector form {
+    align-items: stretch;
+    flex-direction: column;
+  }
+  .inspector form input {
+    margin: 8px 0 0;
+    width: 100%;
+  }
+  .editor .editor-meta {
+    max-height: 220px;
+  }
+}
+
+.save-indicator {
+  font-size: 11px;
+  color: #75856a;
+  text-align: right;
+  margin: 0 0 8px;
+}
+.keyword-network [data-node] {
+  pointer-events: bounding-box;
+}
+.hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 25px;
+  padding: 38px 0;
+}
+.hero h1 {
+  font: 52px/1.05 Georgia;
+  margin: 20px 0;
+  color: #35472f;
+}
+.hero h1 em {
+  font-weight: normal;
+  color: #829675;
+}
+.hero p {
+  font-size: 13px;
+  color: #7d8e71;
+}
+.hero > div > small {
+  font-size: 10px;
+  letter-spacing: 1.6px;
+}
+.hero .write-button {
+  font-size: 12px;
+  min-width: 140px;
+  min-height: 42px;
+  padding: 12px 20px;
+}
+.keyword-network {
+  height: auto;
+  aspect-ratio: 5/3;
+  min-height: 300px;
+}
+.edge-hit {
+  vector-effect: non-scaling-stroke;
+}
+@media (max-width: 700px) {
+  .sidebar .brand {
+    float: none;
+    display: flex;
+    margin-bottom: 12px;
+  }
+  .sidebar .nav-label {
+    display: none;
+  }
+  .sidebar nav {
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+  .hero {
+    display: block;
+    padding: 24px 0;
+  }
+  .hero h1 {
+    font-size: 39px;
+  }
+  .hero .write-button {
+    font-size: 12px;
+    width: auto;
+    min-width: 140px;
+    min-height: 40px;
+  }
+  .keyword-network {
+    height: auto;
+    min-height: 300px;
+  }
+  .note-grid {
+    grid-template-columns: 1fr;
+  }
+  .mini-note {
+    min-height: 170px;
+  }
+}

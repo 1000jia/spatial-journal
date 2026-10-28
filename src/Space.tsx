@@ -1,8 +1,8 @@
 import { Component, useRef, useMemo, useEffect, type ReactNode } from "react";
 import { Group, Vector3, CanvasTexture, SRGBColorSpace } from "three";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { OrbitControls, Line } from "@react-three/drei";
-import { colors, type Entry } from "./model";
+import { OrbitControls } from "@react-three/drei";
+import { type Entry } from "./model";
 // Canvas textures keep labels inside WebGL, avoiding independently mounted DOM roots.
 function PaperText({
   entry,
@@ -125,7 +125,7 @@ export function Space({
     <Boundary>
       <Canvas shadows camera={{ position: [0, 0, 10], fov: 45 }} dpr={[1, 1.5]}>
         <ambientLight intensity={2} />
-        <directionalLight position={[4, 6, 8]} intensity={3} />
+        <directionalLight position={[4, 6, 8]} intensity={3} castShadow />
         <OrbitControls
           enableDamping
           minDistance={5}
@@ -133,39 +133,6 @@ export function Space({
           enableRotate={!archive}
           enableZoom={!archive}
         />
-        {!archive && (
-          <mesh>
-            <sphereGeometry args={[3.1, 32, 20]} />
-            <meshBasicMaterial
-              wireframe
-              color="#a5aaa0"
-              transparent
-              opacity={0.07}
-            />
-          </mesh>
-        )}
-        {!archive &&
-          entries.flatMap((e) =>
-            e.related.map((r) => {
-              const other = entries.find((n) => n.id === r.id);
-              return other ? (
-                <Line
-                  key={e.id + r.id}
-                  points={[e.coordinates, other.coordinates]}
-                  color={colors[e.primaryTopic]}
-                  transparent
-                  opacity={
-                    selected
-                      ? selected === e.id || selected === r.id
-                        ? 0.7
-                        : 0.05
-                      : 0.22
-                  }
-                  lineWidth={0.5 + r.strength}
-                />
-              ) : null;
-            }),
-          )}
         {entries.map((e, i) => {
           if (archive && i < index) return null;
           const active =
@@ -196,15 +163,9 @@ export function Space({
                   onSelect(e);
                 }}
               >
-                {archive ? (
-                  <boxGeometry args={[2.1, 4.1, 0.035]} />
-                ) : (
-                  <sphereGeometry
-                    args={[selected === e.id ? 0.15 : 0.1, 20, 16]}
-                  />
-                )}
+                <boxGeometry args={[2.1, 4.1, 0.035]} />
                 <meshStandardMaterial
-                  color={archive ? "#fffbee" : colors[e.primaryTopic]}
+                  color="#fffbee"
                   transparent
                   opacity={active ? 1 : 0.18}
                   roughness={0.7}
@@ -219,9 +180,6 @@ export function Space({
                 ))}
               {archive && i >= index && i < index + 8 && (
                 <PaperText entry={e} onSelect={() => onSelect(e)} />
-              )}
-              {!archive && (i % 3 === 0 || selected === e.id) && (
-                <PaperText entry={e} label />
               )}
             </AnimatedGroup>
           );
